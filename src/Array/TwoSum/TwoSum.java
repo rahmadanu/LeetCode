@@ -16,7 +16,7 @@ public class TwoSum {
         }
         return null;
 
-        //will use hashmap soon
+        //will use hashmap soon..
     }
 
     public static void main(String[] args) {
