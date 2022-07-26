@@ -14,6 +14,8 @@ class Solution {
 
         System.out.println(Arrays.toString(nums));
 
+        Arrays.sort(nums);
+/*
         for (int i = 1; i < nums.length; i++) {
 
             for (int j = i; j > 0; j--) {
@@ -27,6 +29,7 @@ class Solution {
                 }
             }
         }
+*/
 
         return nums;
     }
