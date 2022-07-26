@@ -5,33 +5,27 @@ import java.util.Arrays;
 class Solution {
     public int[] sortedSquares(int[] nums) {
 
-        int temp;
+        int first = 0;
+        int last = nums.length-1;
+        int index = nums.length-1; // this starts from last index because we want to fill the higher value to the last index of result[]
 
-        for (int i = 0; i < nums.length; i++) {
-
-            nums[i] *= nums[i];
-        }
+        int[] result = new int[nums.length];
 
         System.out.println(Arrays.toString(nums));
 
-        Arrays.sort(nums);
-/*
-        for (int i = 1; i < nums.length; i++) {
+        while (first <= last) {
 
-            for (int j = i; j > 0; j--) {
-                System.out.println(" i: " + i + ", j: " + j + ", j-1: " + (j-1) + " " + Arrays.toString(nums));
-
-                if (nums[j] < nums[j - 1]) {
-
-                    temp = nums[j];
-                    nums[j] = nums[j - 1];
-                    nums[j - 1] = temp;
-                }
+            if (Math.abs(nums[first]) > Math.abs(nums[last])) { // comparing values to get and add the higher one to the new array result[]
+                result[index] = nums[first] * nums[first]; // add squared of nums[first] to result[index]
+                first++;
+            } else {
+                result[index] = nums[last] * nums[last]; // add squared of nums[last] to result[index]
+                last--;
             }
+            index--; // move to the next index with decreasing order (last to first)
         }
-*/
 
-        return nums;
+        return result;
     }
 
     public static void main(String[] args) {
