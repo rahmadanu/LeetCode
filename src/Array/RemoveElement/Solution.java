@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 class Solution {
     public int removeElement(int[] nums, int val) {
+
+        if (nums == null || nums.length == 0) return 0;
+
         int k = 0;
 
         for (int i = 0; i < nums.length; i++) {
@@ -24,6 +27,16 @@ class Solution {
         }
         System.out.println(Arrays.toString(nums));
         return k;
+
+/* might consider for loop for elegant code lol
+        for (int num : nums) {
+
+            if (num != val) {
+
+                nums[k++] = num;
+            }
+        }
+        */
     }
 
     public static void main(String[] args) {
