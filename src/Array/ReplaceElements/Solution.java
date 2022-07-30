@@ -7,7 +7,18 @@ class Solution {
 
         if (arr == null || arr.length == 0) return null;
 
+        //Optimized solution
+        int max = -1, temp;
 
+        for (int i = arr.length - 1; i >= 0; i--) {
+
+            temp = arr[i];
+            arr[i] = max;
+            max = Math.max(max, temp);
+        }
+
+        return arr;
+/*
         //Brute-force approach
         int greatest = 0;
 
@@ -24,6 +35,7 @@ class Solution {
         arr[arr.length-1] = -1;
 
         return arr;
+*/
     }
 
     public static void main(String[] args) {
