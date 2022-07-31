@@ -10,12 +10,7 @@ class Solution {
 
         int count = 0;
 
-        int[] expected = new int[heights.length];
-
-        for (int i = 0; i < heights.length; i++) {
-
-            expected[i] = heights[i];
-        }
+        int[] expected = heights.clone();
 
         Arrays.sort(expected);
 
