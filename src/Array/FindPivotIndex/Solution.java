@@ -3,26 +3,24 @@ package Array.FindPivotIndex;
 import java.util.Arrays;
 
 class Solution {
-    public int pivotIndex(int[] nums) { // says input [1, 2, 1]
-        int[] leftSum = new int[nums.length];
-        int[] rightSum = new int[nums.length];
-        leftSum[0] = nums[0];
-        rightSum[nums.length - 1] = nums[nums.length - 1];
+    public int pivotIndex(int[] nums) {
 
-        for (int i = 1; i < nums.length; i++) {
+        int sum = 0, left = 0;
 
-            leftSum[i] = nums[i] + leftSum[i-1]; // [1, 3, 4]
-            rightSum[nums.length - 1 - i] = nums[nums.length - 1 - i] + rightSum[nums.length-i]; // [4, 3, 1]
+        for (int num : nums) {
+
+            sum += num;
         }
-
-        System.out.println(Arrays.toString(leftSum));
-        System.out.println(Arrays.toString(rightSum));
+        System.out.println("sum: " + sum);
 
         for (int i = 0; i < nums.length; i++) {
 
-            if (leftSum[i] == rightSum[i]) {
-                return i; // return index 1 which has value 3
+            sum -= nums[i];
+
+            if (sum == left) {
+                return i;
             }
+            left += nums[i];
         }
 
         return -1;
@@ -30,6 +28,6 @@ class Solution {
 
     public static void main(String[] args) {
         Solution obj = new Solution();
-        System.out.println(obj.pivotIndex(new int[]{1, 2, 1}));
+        System.out.println(obj.pivotIndex(new int[]{1, 2, 3, 2, 1}));
     }
 }
