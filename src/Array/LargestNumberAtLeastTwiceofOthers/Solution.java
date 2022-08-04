@@ -3,28 +3,24 @@ package Array.LargestNumberAtLeastTwiceofOthers;
 class Solution {
     public int dominantIndex(int[] nums) {
 
-        int max = 0, indexOfLargest = 0;
+        int max = -1, indexOfLargest = -1, secondLargest = -1;
 
-        for (int j : nums) {
-            max = Math.max(max, j);
-        }
         for (int i = 0; i < nums.length; i++) {
 
-            if (nums[i] == max) indexOfLargest = i;
-        }
-
-        for (int num : nums) {
-
-            if (num * 2 > max && num != max) {
-                indexOfLargest = -1;
-                break;
+            if (nums[i] > max) {
+                secondLargest = max;
+                max = nums[i];
+                indexOfLargest = i;
+            } else if (nums[i] > secondLargest) {
+                secondLargest = nums[i];
             }
         }
-        return indexOfLargest;
+
+        return secondLargest * 2 <= max ? indexOfLargest : -1;
     }
 
     public static void main(String[] args) {
         Solution obj = new Solution();
-        System.out.println(obj.dominantIndex(new int[] {1,2,3,4}));
+        System.out.println(obj.dominantIndex(new int[] {0, 0, 0, 2}));
     }
 }
